@@ -6,12 +6,21 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Middleware - Update CORS for production
+// app.use(cors({
+//   origin: [
+//     'https://student-registaration.netlify.app/', // Your actual Netlify URL
+//     'http://localhost:5173'
+//   ],
+//   credentials: true
+// }));
+
+
+// Allow ALL origins - for testing/debugging
 app.use(cors({
-  origin: [
-    'https://student-registaration.netlify.app/', // Your actual Netlify URL
-    'http://localhost:5173'
-  ],
-  credentials: true
+  origin: '*',  // This allows any origin
+ 
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
 app.use(express.json());
